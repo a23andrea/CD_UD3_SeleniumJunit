@@ -11,8 +11,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By.ById;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.events.WebDriverListener;
 import org.openqa.selenium.support.ui.Select;
 
 public class ChromeTest {
@@ -110,6 +113,7 @@ public class ChromeTest {
         WebElement samsung = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div[2]/div/div/div/div/section/div[2]/div[1]/div/ul/li[2]/div/div[3]/ul/li[3]/div/label"));
         WebElement muyBueno = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div[2]/div/div/div/div/section/div[2]/div[1]/div/ul/li[4]/div/div[2]/ul/li[3]/div/label"));
         WebElement precioMin = driver.findElement(By.id("min"));
+        WebElement outClick = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div[2]/div/div/div/div/section/div[2]/div[1]/div/ul/li[1]/div/span"));
 
         samsung.click();
 
@@ -119,125 +123,151 @@ public class ChromeTest {
 
         Thread.sleep(3000);
 
-    }
-    
-    
-    
-    @Test
-    public void dropdownCheck() throws Exception{
+        precioMin.sendKeys("1000");
 
-        WebElement select = driver.findElement(By.name("my-select"));
-        Select comboSelect = new Select(select);
-        comboSelect.selectByIndex(2);
+        Thread.sleep(1000);
+
+        outClick.click();
+
+        Thread.sleep(3000);
 
     }
 
 
     @Test
-    public void elementDataForms() throws Exception{
-        
-        WebElement calendar = driver.findElement(By.name("my-date"));
-        calendar.sendKeys("01/30/2024");
+    public void CPF5() throws Exception{
 
-    }
-
-
-    @AfterAll
-    public static void end(){
-        try {
-            Thread.sleep(4000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        driver.quit();
-    }
-
-
-    
-    @Test
-    public void basicOptions() throws InterruptedException{
-
-        ChromeOptions options = new ChromeOptions();
-        driver = new ChromeDriver(options);
-        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
-        
-        // System.out.println(driver.getTitle())
-
-        WebElement textInput =  driver.findElement(By.id("my-text-id"));
-        textInput.sendKeys("Pop");
-        Thread.sleep(5000);
-
-        WebElement buttonInput = driver.findElement(By.className("btn"));
-        buttonInput.click();
-
-        WebElement submit = driver.findElement(By.className("display-6"));
-        System.out.println(submit.getText());
-        assertEquals("Form submitted", submit.getText());
-        Thread.sleep(5000);
-        driver.quit();
-       
-    
-    }
-
-    @Test
-    public void elementForms() throws InterruptedException {
-
-        ChromeOptions options = new ChromeOptions();
-        driver = new ChromeDriver(options);
-        driver.get("https://www.selenium.dev/selenium/web/web-form.html");
-
-        // Comprobar si el 'input' 'check' está marcado
-
-        WebElement checkButton = driver.findElement(By.id("my-check-1"));
-        assertEquals(true, checkButton.isSelected());
-        assertTrue(checkButton.isSelected());
-
-
-        /* Comprobando si sirve de condición para un 'if'
-        
-        if(checkButton.isSelected() == true){
-
-            System.out.println("está seleccionado");
-
-        } */
-
-
-        // Comprobar si se puede escribir en el 'input diseabled'
-
-
-        WebElement disabledInput = driver.findElement(By.name("my-disabled"));
-        disabledInput.sendKeys("Hohohoh");
-
-
-        Thread.sleep(5000);
-        driver.quit();
-
-    }
-
-    @Test
-    public void uploadPic() throws InterruptedException{
-
-        // 'ChromeOpions' no son necesarias si no se van a utilizar
-        // ChromeOptions options = new ChromeOptions();
-        driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/upload");
-
-        
-        String picName = "casa.png";
-        File uploadPicFile = new File("src/test/files/" + picName);
-        WebElement dropPic = driver.findElement(By.id("file-upload"));
-        dropPic.sendKeys(uploadPicFile.getAbsolutePath());
+        WebElement cookies = driver.findElement(By.xpath("// button [@type = \"button\" ]"));
+        cookies.click();
 
         Thread.sleep(2000);
 
-        driver.findElement(By.id("file-submit")).click();
+        WebElement allEle = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/header/div[2]/button"));
+        allEle.click();
 
-        WebElement text = driver.findElement(By.id("uploaded-files"));
+        Thread.sleep(2000);
 
-        assertEquals(picName, text.getText());
+        Actions accion = new Actions(driver);
+        WebElement ipad = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div/div/section/nav/div[1]/a[4]"));
 
-        Thread.sleep(5000);
-        driver.quit();
+        accion.moveToElement(ipad).perform();
+
+        Thread.sleep(2000);
+
+        WebElement moreIpad = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div/div/aside/div/div[1]/div/div[1]/a"));
+
+        accion.moveToElement(moreIpad);
+
+        Thread.sleep(2000);
+
+        moreIpad.click();
+
+        Thread.sleep(2000);
+
+        WebElement allEle2 = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div[1]/header/div[2]/button"));
+
+        allEle2.click();
+
+        Thread.sleep(2000);
+
+        WebElement sell = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div[1]/div/div/section/div/a[1]"));
+
+        sell.click();
+
+        Thread.sleep(2000);
+
+        WebElement ipadSell = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[3]/div/div/div[4]/div/div/div/div/nav/ul/li[3]"));
+
+        ipadSell.click();
+
+        Thread.sleep(2000);
+
+        WebElement brandDrop = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div/div/button"));
+        WebElement brandElement = driver.findElement(By.id("brand"));
+        Select brand = new Select(brandElement);
+
+        brandDrop.click();
+        brand.selectByIndex(1);
+
+        Thread.sleep(2000);
+        
+        WebElement modelDrop = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[2]/div/button"));
+        WebElement modelElement = driver.findElement(By.id("model_family"));
+        Select model = new Select(modelElement);
+
+        modelDrop.click();
+        model.selectByIndex(14);
+
+        Thread.sleep(2000);
+
+        WebElement model2Drop = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[3]/div[2]/button"));
+        WebElement model2Element = driver.findElement(By.id("model"));
+        Select model2 = new Select(model2Element);
+
+        model2Drop.click();
+        model2.selectByIndex(1);
+
+        Thread.sleep(2000);
+
+        WebElement capacityDrop = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[4]/div/button"));
+        WebElement capacityElement = driver.findElement(By.id("storage"));
+        Select capacity = new Select(capacityElement);
+
+        capacityDrop.click();
+        capacity.selectByIndex(1);
+
+        Thread.sleep(2000);
+
+        WebElement next = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[5]/button"));
+        next.click();
+
+        Thread.sleep(2000);
+
+        WebElement good = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[1]/div[2]/div[2]/div/label"));
+        good.click();
+
+        Thread.sleep(2000);
+
+        WebElement next2 = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[2]/button"));
+        next2.click();
+        Thread.sleep(2000);
+
+        WebElement good2 = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[1]/div/div[2]/div/label"));
+
+        good2.click();
+
+        Thread.sleep(2000);
+
+        WebElement next3 = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[2]/button"));
+
+        next3.click();
+
+        Thread.sleep(2000);
+
+        WebElement yes = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[1]/div/div[1]/div/label"));
+
+        Thread.sleep(2000);
+
+        WebElement show = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[2]/button"));
+
+        show.click();
+
+        Thread.sleep(4000);
+
+        WebElement acept = driver.findElement(By.xpath("//*[@id=\"buybackQuestionsForm\"]/div[2]/button"));
+
+        acept.click();
+
+        Thread.sleep(2000);
+
+        driver.navigate().back();
+
+        Thread.sleep(4000);
+
+        driver.navigate().back();
+
+        Thread.sleep(2000);
+
 
     }
 
