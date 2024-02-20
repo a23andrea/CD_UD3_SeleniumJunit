@@ -90,7 +90,7 @@ public class ChromeTest {
 
         Thread.sleep(2000);
 
-        WebElement favButton = driver.findElement(By.xpath("// button [@aria-label=\"Añadir a favoritos\"]"));
+        WebElement favButton = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div[2]/div/div/div[3]/div/div/div[2]/div/div/div[1]/div/div[2]/div[2]/div[2]/button"));
         favButton.click();
 
         Thread.sleep(2000);
@@ -98,6 +98,26 @@ public class ChromeTest {
         driver.navigate().back();
 
         Thread.sleep(5000);
+
+    }
+
+
+    @Test
+    public void CPF4() throws Exception{
+
+        CPF1();
+
+        WebElement samsung = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div[2]/div/div/div/div/section/div[2]/div[1]/div/ul/li[2]/div/div[3]/ul/li[3]/div/label"));
+        WebElement muyBueno = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div[2]/div/div/div/div/section/div[2]/div[1]/div/ul/li[4]/div/div[2]/ul/li[3]/div/label"));
+        WebElement precioMin = driver.findElement(By.id("min"));
+
+        samsung.click();
+
+        Thread.sleep(3000);
+
+        muyBueno.click();
+
+        Thread.sleep(3000);
 
     }
     
