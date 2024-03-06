@@ -46,11 +46,10 @@ public class ChromeTest {
 
         Thread.sleep(2000);
 
-        WebElement searchButton = driver.findElement(By.xpath("//button[@aria-label = \"Search\"]"));
+        WebElement searchButton = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/header/div[1]/div[2]/form/div[1]/button[2]"));
         searchButton.click();
 
         Thread.sleep(2000);
-
 
 
     }
@@ -60,7 +59,7 @@ public class ChromeTest {
         
         CPF1();
         
-        WebElement item = driver.findElement(By.xpath("// a [@href= \"/es-es/p/apple-watch-series-se-gps-40-mm-aluminio-blanco-estrella-correa-deportiva-blanco-estrella/78fb1d27-1e8b-4a8c-b917-fe54b3f6820c#l=10\"]"));
+        WebElement item = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div[2]/div/div/div/div/section/div[2]/div[2]/div[2]/div/div/div[1]/a"));
         item.click();
 
         Thread.sleep(2000);
@@ -88,7 +87,7 @@ public class ChromeTest {
         
         CPF1();
         
-        WebElement item = driver.findElement(By.xpath("// a [@href= \"/es-es/p/apple-watch-series-se-gps-40-mm-aluminio-blanco-estrella-correa-deportiva-blanco-estrella/78fb1d27-1e8b-4a8c-b917-fe54b3f6820c#l=10\"]"));
+        WebElement item = driver.findElement(By.xpath("//*[@id=\"__layout\"]/div/div[2]/div[2]/div/div/div/div/section/div[2]/div[2]/div[2]/div/div/div[1]/a"));
         item.click();
 
         Thread.sleep(2000);
@@ -270,5 +269,16 @@ public class ChromeTest {
 
 
     }
+
+
+    @AfterAll
+    public static void end () throws InterruptedException{
+
+        Thread.sleep(2000);
+        
+        driver.close();
+
+    }
+
 
 }
